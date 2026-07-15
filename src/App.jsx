@@ -1,18 +1,17 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Login from "./components/Login";
-import BlogList from "./components/BlogList";
-import CreateBlog from "./components/CreateBlog";
-import Blog from "./components/Blog";
+import { Navigate, Route, Routes } from "react-router-dom";
+import AuthPage from "./pages/AuthPage";
+import BlogList from "./pages/BlogList";
+import AddEditBlog from "./pages/AddEditBlog";
 
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="/login" element={<AuthPage />} />
       <Route path="/blogs" element={<BlogList />} />
-      <Route path="/blogs/:id" element={<Blog />} />
-      <Route path="/blogs/new" element={<CreateBlog />} />
-      <Route path="/blogs/:id/edit" element={<CreateBlog />} />
+      <Route path="/blogs/:id" element={<BlogList />} />
+      <Route path="/blogs/new" element={<AddEditBlog />} />
+      <Route path="/blogs/:id/edit" element={<AddEditBlog />} />
     </Routes>
   );
 }
