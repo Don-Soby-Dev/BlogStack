@@ -14,10 +14,10 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   function signUp(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
+    return createUser(auth, email, password);
   }
 
-  function login(email, password) {
+  function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
@@ -38,7 +38,7 @@ export function AuthProvider({ children }) {
     currentUser,
     loading,
     signUp,
-    login,
+    logIn,
     logOut,
   };
 
