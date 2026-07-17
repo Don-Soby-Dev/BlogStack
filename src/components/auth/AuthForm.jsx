@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AuthForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [isLogin, setIsLogin] = useState(true);
+  const { logIn, signUp } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { logIn, signUp } = useAuth();
-  const navigate = useNavigate();
+  const isLogin = location.pathname === "/login";
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -39,6 +41,15 @@ const AuthForm = () => {
       }
     } finally {
       setLoading(false);
+    }
+  }
+
+  function handleToggleMode() {
+    setError("");
+    if (isLogin) {
+      navigate("/signup");
+    } else {
+      navigate("/login");
     }
   }
 
@@ -113,10 +124,7 @@ const AuthForm = () => {
         {isLogin ? "Don't have an account? " : "Already have an account? "}
         <button
           type="button"
-          onClick={() => {
-            setIsLogin(!isLogin);
-            setError("");
-          }}
+          onClick={handleToggleMode}
           className="text-blue-600 font-medium hover:underline focus:outline-none"
         >
           {isLogin ? "Sign Up" : "Log In"}
