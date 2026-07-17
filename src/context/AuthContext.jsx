@@ -34,7 +34,7 @@ export function AuthProvider({ children }) {
     return unsubscribe;
   }, []);
 
-  value = {
+  const value = {
     currentUser,
     loading,
     signUp,
@@ -43,9 +43,9 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContextProvider value={value}>
-      {!loding && children}
-    </AuthContextProvider>
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
   );
 }
 
