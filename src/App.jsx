@@ -12,7 +12,7 @@ function App() {
       <Route path="/blogs" element={<BlogList />} />
       <Route path="/blogs/:id" element={<BlogList />} />
       <Route path="/blogs/new" element={<AddEditBlog />} />
-      <Route path="/blogs/:id/edit" element={<AddEditBlog />} />
+      <Route path="/blogs/edit/:id" element={<AddEditBlog />} />
     </Routes>
   );
 }
