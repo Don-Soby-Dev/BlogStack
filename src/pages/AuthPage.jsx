@@ -8,7 +8,7 @@ export default function AuthPage() {
 
   // If they are already logged in, redirect them straight to the blog list.
   if (currentUser) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/blogs" replace />;
   }
 
   return (
