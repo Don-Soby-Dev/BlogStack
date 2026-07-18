@@ -1,8 +1,10 @@
 import {
+  doc,
   addDoc,
   collection,
   deleteDoc,
   getDoc,
+  getDocs,
   orderBy,
   query,
   serverTimestamp,
@@ -21,6 +23,7 @@ export async function createPost(title, content, authorId, authorName) {
       authorName,
       createdAt: serverTimestamp(),
     });
+    console.log(docRef.id);
     return docRef.id;
   } catch (err) {
     console.error("Error while creating post: ", err);
