@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, orderBy, query, serverTimestamp, updateDoc } from "firebase/firestore"
+import { addDoc, collection, deleteDoc, getDoc, orderBy, query, serverTimestamp, updateDoc } from "firebase/firestore"
 import { db } from "./config"
 
 
@@ -56,6 +56,18 @@ export async function deletePost(postId) {
         await deleteDoc(postRef)
     }catch(err){
         console.error("Error while deleting post: ", err);
+        throw err
+    }
+}
+
+export async function getPostById(postId) {
+    try{
+        const postRef = doc(db, POSTS_COLLECTION, postId)
+        const postSnapshot = await getDoc(postRef)
+        
+        return {id:postSnapshot.id, ...postSnapshot.data()}
+    }catch(err){
+        console.error("Error while geting Post: ", err);
         throw err
     }
 }
