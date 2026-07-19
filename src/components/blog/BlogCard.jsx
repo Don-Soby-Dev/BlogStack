@@ -61,7 +61,7 @@ export default function BlogCard({ post, onDelete }) {
         {isAuthor && (
           <div className="flex gap-2 pt-4 border-t border-gray-100">
             <button
-              onClick={() => navigate(`blogs/edit/${post.id}`)}
+              onClick={() => navigate(`edit/${post.id}`)}
               className="flex-1 py-2 px-4 bg-blue-50 text-blue-600 font-semibold rounded-md hover:bg-blue-100 transition duration-200"
             >
               Edit

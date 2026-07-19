@@ -3,6 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
 import BlogForm from "../components/blog/BlogForm";
 import { createPost, getPostById, updatePost } from "../firebase/firestore";
+import Header from "../components/layout/Header";
 
 const AddEditBlog = () => {
   const { id } = useParams();
@@ -73,8 +74,9 @@ const AddEditBlog = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-2xl mx-auto">
+    <div className="min-h-screen bg-gray-50 ">
+      <Header />
+      <div className="max-w-2xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-lg shadow-md p-8">
           <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
             {isEditMode ? "Edit Blog Post" : "Create a New Blog Post"}
