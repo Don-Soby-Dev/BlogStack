@@ -7,7 +7,7 @@ import BlogDetail from "./pages/BlogDetail";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="/" element={<Navigate to="/blogs" replace />} />
       <Route path="/login" element={<AuthPage />} />
       <Route path="/signup" element={<AuthPage />} />
       <Route path="/blogs" element={<BlogList />} />
