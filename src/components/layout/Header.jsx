@@ -1,10 +1,11 @@
 // src/components/layout/Header.jsx
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 export default function Header() {
   const { currentUser, logOut } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   async function handleLogout() {
     try {
@@ -30,12 +31,14 @@ export default function Header() {
           <nav className="flex items-center gap-4">
             {currentUser ? (
               <>
-                <Link
-                  to="/blogs/new"
-                  className="py-2 px-4 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200"
-                >
-                  + New Post
-                </Link>
+                {location.pathname === "/blogs" && (
+                  <Link
+                    to="/blogs/new"
+                    className="py-2 px-4 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200"
+                  >
+                    + New Post
+                  </Link>
+                )}
 
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-gray-600 hidden sm:inline">
