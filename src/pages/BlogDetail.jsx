@@ -150,7 +150,7 @@ export default function BlogDetail() {
           {isAuthor && (
             <div className="flex gap-3 mt-10 pt-6 border-t border-gray-100">
               <button
-                onClick={() => navigate(`/edit-blog/${post.id}`)}
+                onClick={() => navigate(`/blogs/edit/${post.id}`)}
                 className="flex-1 py-2.5 px-4 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200"
               >
                 Edit Post
